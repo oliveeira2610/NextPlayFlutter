@@ -80,6 +80,7 @@ class _LoginState extends State<Login> {
                 decoration: BoxDecoration(
                   color: Color(0xFF35719B), // Fundo mais claro
                   borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.white, width: 4),
                 ),
                 child: Form(
                   key: _formKey,
@@ -105,7 +106,16 @@ class _LoginState extends State<Login> {
                           fillColor: Colors.white.withOpacity(0.2),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                          ),
+                            borderSide: BorderSide(color: Colors.white, width: 2), // Borda branca
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(color: Colors.white, width: 2), // Borda branca quando habilitado
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(color: Colors.white, width: 2), // Borda branca quando em foco
+                            ),
                         ),
                         validator: (String? email) {
                           if (email == null || email.isEmpty) {
@@ -129,7 +139,16 @@ class _LoginState extends State<Login> {
                           fillColor: Colors.white.withOpacity(0.2),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                          ),
+                            borderSide: BorderSide(color: Colors.white, width: 2), // Borda branca
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(color: Colors.white, width: 2), // Borda branca quando habilitado
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(color: Colors.white, width: 2), // Borda branca quando em foco
+                            ),
                           suffixIcon: GestureDetector(
                             onTap: () {
                               setState(() {
