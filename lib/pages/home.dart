@@ -8,34 +8,53 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
-      home: MyHomePage(),
+      title: 'YouTube Sidebar Demo',
+      theme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      home: HomeScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  String? _selectedValue; // Valor selecionado no Dropdown
+  bool _isDropdownOpened = false; // Estado do dropdown
+
+  void _toggleDropdown() {
+    setState(() {
+      _isDropdownOpened = !_isDropdownOpened;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.black,
+        elevation: 0, // Remove a sombra
         leading: IconButton(
           icon: Icon(Icons.menu),
-          onPressed: () {},
+          onPressed: () {
+            _scaffoldKey.currentState?.openDrawer();
+          },
         ),
         actions: [
           CircleAvatar(
             backgroundImage: NetworkImage('https://i.imgur.com/407k9rD.jpg'),
           ),
+          SizedBox(width: 10),
           CircleAvatar(
             backgroundImage: NetworkImage('https://i.imgur.com/V3p9L2w.png'),
           ),
+          SizedBox(width: 10),
           CircleAvatar(
             backgroundColor: Colors.lightBlue,
             child: Icon(
@@ -43,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.white,
             ),
           ),
+          SizedBox(width: 10),
           CircleAvatar(
             backgroundColor: Colors.black,
             child: Icon(
@@ -50,15 +70,52 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.white,
             ),
           ),
+          SizedBox(width: 20),
         ],
+      ),
+      drawer: Drawer(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            ListTile(
+              leading: IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: () {
+                  _scaffoldKey.currentState?.openDrawer();
+                },
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Conta'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.video_library),
+              title: Text('Categorias'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               height: 200,
-              child: Image.network(
-                'https://i.imgur.com/G5hH630.jpg',
+              child: Image.asset(
+                'farmDeAgua.png',
                 fit: BoxFit.cover,
               ),
             ),
@@ -110,9 +167,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black, // Cor do fundo
         selectedItemColor: Colors.lightBlue,
-        unselectedItemColor: Colors.white,
+        unselectedItemColor: const Color.fromARGB(255, 255, 255, 255), // Cor dos itens não selecionados
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

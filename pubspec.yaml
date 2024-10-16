@@ -60,6 +60,8 @@ flutter:
     - assets/google_icon.png
     - assets/instagram_icon.png
     - assets/Facebook_icon.png
+    - assets/farmDeAgua.png
+
 
 
   # The following line ensures that the Material Icons font is
