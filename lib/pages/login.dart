@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:projeto_nextplay/pages/loadingpage.dart';
+
 import 'package:projeto_nextplay/pages/cadastro.dart';
 import 'package:projeto_nextplay/pages/home.dart';
 

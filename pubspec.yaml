@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  url_launcher: ^6.0.20
 
   shared_preferences: ^2.0.9  # ou a versão mais recente disponível
 
@@ -61,8 +62,10 @@ flutter:
     - assets/instagram_icon.png
     - assets/Facebook_icon.png
     - assets/farmDeAgua.png
-
-
+    - assets/futebolAuto.png
+    - assets/viniccius13.jpg   
+    - assets/DropC.png
+    - assets/DropO.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
